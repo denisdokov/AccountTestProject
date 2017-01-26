@@ -21,14 +21,14 @@ public class LoginStepdefs {
     LoginPage loginPage = page(LoginPage.class);
     MainPage mainPage = page(MainPage.class);
 
-    @Given("^open account\\.paysecure\\.ru$")
+    @Given("^открыть account\\.paysecure\\.ru$")
     public void openAccount()
     {
         open("http://account.t.paysecure.ru");
     }
 
 
-    @And("^check that element with name \"([^\"]*)\" is displayed on \"([^\"]*)\"$")
+    @And("^проверить, что элемент с именем \"([^\"]*)\" отображается на \"([^\"]*)\"$")
     public void checkThatElementWithNameIsDisplayed(String elementName, String page)
     {
         if ("Страница входа".equals(page))
@@ -40,12 +40,12 @@ public class LoginStepdefs {
         }
 
     }
-    @And("^type to input with name \"([^\"]*)\" text: \"([^\"]*)\" on \"([^\"]*)\"$")
+    @And("^ввести в поле с именем \"([^\"]*)\" текст: \"([^\"]*)\" на \"([^\"]*)\"$")
     public void typeToInputWithNameText(String nameOfElement, String text, String page)
     {
         loginPage.get(nameOfElement).sendKeys(text);
     }
-    @When("^press button with text \"([^\"]*)\" on \"([^\"]*)\"$")
+    @When("^нажать кнопку с текстом \"([^\"]*)\" на \"([^\"]*)\"$")
     public void press(String button, String page)
     {
         loginPage.get(button).click();

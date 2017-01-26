@@ -1,12 +1,12 @@
 @logintest
 Feature: login test #1, login to account.paysecure.ru
 
-  Scenario: go through to button "Подтвердить"
+  Scenario: Войти в личный кабинет
 
-    Given open account.paysecure.ru
-    And check that element with name "Заголовок страницы" is displayed on "Cтраница входа"
-    And type to input with name "Логин" text: "test1602rgk2" on "Cтраница входа"
-    And type to input with name "Пароль" text: "test1602rgk3" on "Cтраница входа"
-    When press button with text "Подтвердить" on "Cтраница входа"
-    Then check that element with name "Заголовок страницы" is displayed on "Главная страница"
+    Given открыть account.paysecure.ru
+    And проверить, что элемент с именем "Заголовок страницы" отображается на "Cтраница входа"
+    And ввести в поле с именем "Логин" текст: "test1602rgk2" на "Cтраница входа"
+    And ввести в поле с именем "Пароль" текст: "test1602rgk3" на "Cтраница входа"
+    When нажать кнопку с текстом "Подтвердить" на "Cтраница входа"
+    Then проверить, что элемент с именем "Заголовок страницы" отображается на "Главная страница"
 
