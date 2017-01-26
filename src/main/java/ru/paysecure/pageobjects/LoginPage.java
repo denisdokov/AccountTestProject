@@ -25,7 +25,7 @@ public class LoginPage extends AbstractPage {
     public SelenideElement Password;
 
     //Кнопка "Подтвердить"
-    @NameOfElement("Подтвердить")
+    @NameOfElement("Кнопка Подтвердить")
     @FindBy(name = "approve")
     public SelenideElement SubmitButton;
 }

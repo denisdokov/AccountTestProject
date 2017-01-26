@@ -28,24 +28,24 @@ public class LoginStepdefs {
     }
 
 
-    @And("^проверить, что элемент с именем \"([^\"]*)\" отображается на \"([^\"]*)\"$")
+    @And("^проверить, что элемент с именем \"([^\"]*)\" отображается в \"([^\"]*)\"$")
     public void checkThatElementWithNameIsDisplayed(String elementName, String page)
     {
         if ("Страница входа".equals(page))
         {
             loginPage.get(elementName).shouldBe(Condition.appears);
-        } else if ("Главная страница".equals(page))
+        } else if ("Главное меню".equals(page))
         {
             mainPage.get(elementName).shouldBe(Condition.appears);
         }
 
     }
-    @And("^ввести в поле с именем \"([^\"]*)\" текст: \"([^\"]*)\" на \"([^\"]*)\"$")
+    @And("^ввести в поле с именем \"([^\"]*)\" текст: \"([^\"]*)\" в \"([^\"]*)\"$")
     public void typeToInputWithNameText(String nameOfElement, String text, String page)
     {
         loginPage.get(nameOfElement).sendKeys(text);
     }
-    @When("^нажать кнопку с текстом \"([^\"]*)\" на \"([^\"]*)\"$")
+    @When("^кликнуть по элементу с именем \"([^\"]*)\" в \"([^\"]*)\"$")
     public void press(String button, String page)
     {
         loginPage.get(button).click();

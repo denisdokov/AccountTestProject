@@ -12,17 +12,19 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 
 @CucumberOptions(
-        plugin = {"html:target/cucumber-report/login", "json:target/cucumber.json"},
+        plugin = {"html:target/cucumber-report", "json:target/cucumber.json"},
         features = "src/test/java/ru/paysecure/features",
         glue = "ru/paysecure/steps",
-        tags = "@logintest")
+        tags = "@smoketest")
 
-public class LoginTest
+public class SmokeTest
 {
 
     @BeforeClass
     static public void setupTimeout()
     {
         Configuration.timeout = 10000;
-            }
+
+    }
+
 }
