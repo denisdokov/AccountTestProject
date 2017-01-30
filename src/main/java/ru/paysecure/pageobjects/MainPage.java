@@ -9,8 +9,13 @@ import org.openqa.selenium.support.FindBy;
 public class MainPage extends AbstractPage {
 
     //Заголовок
-    @NameOfElement("Заголовок страницы")
+    @NameOfElement("Заголовок главной страницы")
     @FindBy(xpath="//tbody/tr/td[text()=\"Основная информация\"]")
     public SelenideElement title;
+
+    //Пункт меню "Виртуальный терминал"
+    @NameOfElement("Вкладка виртуального терминала")
+    @FindBy (xpath = "//td/div/table/tbody/tr/td[text()=\"Виртуальный терминал\"]")
+    public SelenideElement VirtualTerminalTab;
 
 }
