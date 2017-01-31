@@ -8,12 +8,14 @@ import cucumber.api.java.en.When;
 import ru.paysecure.pageobjects.LoginPage;
 import ru.paysecure.pageobjects.MainPage;
 import ru.paysecure.pageobjects.VirtualTerminalMotoPage;
+import ru.paysecure.pageobjects.VirtualTerminalPosPage;
 import ru.paysecure.pageobjects.VirtualTerminalPage;
 
 
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.Selenide.sleep;
+import static ru.paysecure.utils.Generators.getNumber;
 
 
 /**
@@ -25,6 +27,7 @@ public class AccountStepdefs {
     MainPage mainPage = page(MainPage.class);
     VirtualTerminalPage vtPage = page(VirtualTerminalPage.class);
     VirtualTerminalMotoPage vtMotoPage = page(VirtualTerminalMotoPage.class);
+    VirtualTerminalPosPage vtPosPage = page(VirtualTerminalPosPage.class);
 
     @Given("^открыть account\\.t\\.paysecure\\.ru$")
     public void openAccount()
@@ -52,12 +55,20 @@ public class AccountStepdefs {
         {
             vtMotoPage.get(elementName).shouldBe(Condition.appears);
         }
+        else if ("Раздел виртуального терминала (POS - платеж)".equals(page))
+        {
+            vtPosPage.get(elementName).shouldBe(Condition.appears);
+        }
 
 
     }
     @And("^ввести в поле с именем \"([^\"]*)\" текст: \"([^\"]*)\" в \"([^\"]*)\"$")
     public void typeToInputWithNameText(String nameOfElement, String text, String page)
     {
+        if ("$Номер заказа".equals(text))
+        {
+            text = getNumber();
+        }
         if ("Cтраница входа".equals(page))
         {
             loginPage.get(nameOfElement).sendKeys(text);
@@ -65,6 +76,10 @@ public class AccountStepdefs {
         else if ("Раздел виртуального терминала (MOTO - платеж)".equals(page))
         {
             vtMotoPage.get(nameOfElement).sendKeys(text);
+        }
+        else if ("Раздел виртуального терминала (POS - платеж)".equals(page))
+        {
+            vtPosPage.get(nameOfElement).sendKeys(text);
         }
     }
     @And("^из выпадающего списка \"([^\"]*)\" выбрать элемент \"([^\"]*)\" в \"([^\"]*)\"$")
@@ -78,6 +93,10 @@ public class AccountStepdefs {
         {
             vtMotoPage.get(elementName).sendKeys(text);
         }
+        else if ("Раздел виртуального терминала (POS - платеж)".equals(page))
+        {
+            vtPosPage.get(elementName).sendKeys(text);
+        }
     }
 
     @And("^подождать пока пропадет элемент \"([^\"]*)\" в \"([^\"]*)\"$")
@@ -86,6 +105,10 @@ public class AccountStepdefs {
         if ("Раздел виртуального терминала (MOTO - платеж)".equals(page))
         {
             vtMotoPage.get(elementName).waitUntil(Condition.disappears, 10000);
+        }
+        else if ("Раздел виртуального терминала (POS - платеж)".equals(page))
+        {
+            vtPosPage.get(elementName).waitUntil(Condition.disappears, 10000);
         }
     }
 
@@ -107,6 +130,10 @@ public class AccountStepdefs {
         else if ("Раздел виртуального терминала (MOTO - платеж)".equals(page))
         {
             vtMotoPage.get(elementName).click();
+        }
+        else if ("Раздел виртуального терминала (POS - платеж)".equals(page))
+        {
+            vtPosPage.get(elementName).click();
         }
 
     }

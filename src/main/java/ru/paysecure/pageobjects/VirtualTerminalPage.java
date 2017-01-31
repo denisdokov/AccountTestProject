@@ -28,4 +28,9 @@ public class VirtualTerminalPage extends AbstractPage {
     @FindBy(xpath = "//div[@id]/table/tbody/tr/td[text()=\"Ручной ввод в отсутствии клиента (MOTO)\"]")
     public SelenideElement motoTab;
 
+    //Вкладка "Ручной ввод в присутствии клиента (POS key entry)"
+    @NameOfElement("Ручной ввод в присутствии клиента (POS key entry)")
+    @FindBy(xpath = "//div[@id]/table/tbody/tr/td[text()=\"Ручной ввод в присутствии клиента (POS key entry)\"]")
+    public SelenideElement posTab;
+
 }

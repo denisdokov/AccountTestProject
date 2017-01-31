@@ -1,4 +1,4 @@
-package ru.paysecure.pageobjects;
+package ru.paysecure.utils;
 
 import com.codeborne.selenide.Condition;
 import org.openqa.selenium.WebElement;

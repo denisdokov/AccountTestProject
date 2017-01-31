@@ -20,7 +20,7 @@ public class VirtualTerminalMotoPage extends AbstractPage {
 
     //Поле ввода "Валюта"(MOTO)
     @NameOfElement("Валюта")
-    @FindBy(xpath = "(//label[text()=\"Валюта\"])[1]/../../following::input[1]")
+    @FindBy(xpath = "(//label[text()=\"Валюта\"])[1]/../../following::div[1]")
     public SelenideElement currencyComboBox;
 
     //Поле ввода "E-mail"(MOTO)
@@ -30,7 +30,7 @@ public class VirtualTerminalMotoPage extends AbstractPage {
 
     //Поле ввода "Язык"(MOTO)
     @NameOfElement("Язык")
-    @FindBy(xpath = "(//label[text()=\"Язык\"])[1]/../../following::input[1]")
+    @FindBy(xpath = "(//label[text()=\"Язык\"])[1]/../../following::div[1]")
     public SelenideElement languageComboBox;
 
     //Поле ввода "Коментарий"(MOTO)
