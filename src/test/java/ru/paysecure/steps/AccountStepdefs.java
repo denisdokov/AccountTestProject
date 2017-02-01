@@ -5,6 +5,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import cucumber.api.java.uk.Нехай;
 import ru.paysecure.pageobjects.LoginPage;
 import ru.paysecure.pageobjects.MainPage;
 import ru.paysecure.pageobjects.VirtualTerminalMotoPage;
@@ -75,12 +76,11 @@ public class AccountStepdefs {
         }
         else if ("Раздел виртуального терминала (MOTO - платеж)".equals(page))
         {
-            vtMotoPage.get(nameOfElement).sendKeys(text);
+            vtMotoPage.get(nameOfElement).scrollTo().sendKeys(text);
         }
         else if ("Раздел виртуального терминала (POS - платеж)".equals(page))
         {
-            sleep(500);
-            vtPosPage.get(nameOfElement).sendKeys(text);
+            vtPosPage.get(nameOfElement).scrollTo().sendKeys(text);
         }
     }
     @And("^из выпадающего списка \"([^\"]*)\" выбрать элемент \"([^\"]*)\" в \"([^\"]*)\"$")
@@ -100,7 +100,7 @@ public class AccountStepdefs {
         }
     }
 
-    @And("^подождать пока пропадет элемент \"([^\"]*)\" в \"([^\"]*)\"$")
+    @And("^ожидать пока пропадет элемент \"([^\"]*)\" в \"([^\"]*)\"$")
     public void waitUntiEllementDisappears(String elementName, String page)
     {
         if ("Раздел виртуального терминала (MOTO - платеж)".equals(page))
@@ -137,5 +137,13 @@ public class AccountStepdefs {
             vtPosPage.get(elementName).click();
         }
 
+    }
+    @And("^ожидать пока отработает скрипт на странице \"([^\"]*)\"$")
+    public void waitUntiScripFinished(String page)
+    {
+        if ("Раздел виртуального терминала (POS - платеж)".equals(page))
+        {
+            sleep(500); //TODO разобраться как дождаться окончания работы скрипта програмно (это маскирование номера карты)
+        }
     }
 }
