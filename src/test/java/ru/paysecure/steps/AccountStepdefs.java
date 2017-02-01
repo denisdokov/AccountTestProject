@@ -133,6 +133,7 @@ public class AccountStepdefs {
         }
         else if ("Раздел виртуального терминала (POS - платеж)".equals(page))
         {
+            sleep(500);
             vtPosPage.get(elementName).click();
         }
 
