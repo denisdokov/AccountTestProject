@@ -95,7 +95,7 @@ public class VirtualTerminalPosPage extends AbstractPage {
 
     //Сообщение "Завершено Успешно"
     @NameOfElement("Сообщение Завершено успешно")
-    @FindBy(xpath = "//tr/td/div[text()=\"AS000\"]")
+    @FindBy(xpath = "//tr/td/div[text()=\"Завершено успешно \"]")
     public SelenideElement okMessage;
 
 }
