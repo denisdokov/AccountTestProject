@@ -1,5 +1,5 @@
 @smoketest
-Feature: login test #1, вход в личный кабинет account.paysecure.ru
+Feature: Вход в личный кабинет account.paysecure.ru
 
   Scenario: Войти в личный кабинет
 
