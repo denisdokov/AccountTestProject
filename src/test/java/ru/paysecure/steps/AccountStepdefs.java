@@ -6,11 +6,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import cucumber.api.java.uk.Нехай;
-import ru.paysecure.pageobjects.LoginPage;
-import ru.paysecure.pageobjects.MainPage;
-import ru.paysecure.pageobjects.VirtualTerminalMotoPage;
-import ru.paysecure.pageobjects.VirtualTerminalPosPage;
-import ru.paysecure.pageobjects.VirtualTerminalPage;
+import ru.paysecure.pageobjects.*;
 
 
 import static com.codeborne.selenide.Selenide.open;
@@ -29,6 +25,9 @@ public class AccountStepdefs {
     VirtualTerminalPage vtPage = page(VirtualTerminalPage.class);
     VirtualTerminalMotoPage vtMotoPage = page(VirtualTerminalMotoPage.class);
     VirtualTerminalPosPage vtPosPage = page(VirtualTerminalPosPage.class);
+    BillsPage billsPage = page(BillsPage.class);
+    NewBillPage newBillPage =page(NewBillPage.class);
+    InfoPage infoPage =page(InfoPage.class);
 
     @Given("^открыть account\\.t\\.paysecure\\.ru$")
     public void openAccount()
@@ -60,13 +59,26 @@ public class AccountStepdefs {
         {
             vtPosPage.get(elementName).shouldBe(Condition.appears);
         }
+        else if ("Раздел Счета".equals(page))
+        {
+            billsPage.get(elementName).shouldBe(Condition.appears);
+        }
+        else if ("Окно Новый счет".equals(page))
+        {
+            newBillPage.get(elementName).shouldBe(Condition.appears);
+        }
+        else if ("Информационное сообщение".equals(page))
+        {
+            infoPage.get(elementName).shouldBe(Condition.appears);
+        }
+
 
 
     }
     @And("^ввести в поле с именем \"([^\"]*)\" текст: \"([^\"]*)\" в \"([^\"]*)\"$")
     public void typeToInputWithNameText(String nameOfElement, String text, String page)
     {
-        if ("$Номер заказа".equals(text))
+        if ("$Номер заказа".equals(text) || "$Номер счета".equals(text))
         {
             text = getNumber();
         }
@@ -81,6 +93,10 @@ public class AccountStepdefs {
         else if ("Раздел виртуального терминала (POS - платеж)".equals(page))
         {
             vtPosPage.get(nameOfElement).scrollTo().sendKeys(text);
+        }
+        else if ("Окно Новый счет".equals(page))
+        {
+            newBillPage.get(nameOfElement).scrollTo().sendKeys(text);
         }
     }
     @And("^из выпадающего списка \"([^\"]*)\" выбрать элемент \"([^\"]*)\" в \"([^\"]*)\"$")
@@ -97,6 +113,10 @@ public class AccountStepdefs {
         else if ("Раздел виртуального терминала (POS - платеж)".equals(page))
         {
             vtPosPage.get(elementName).sendKeys(text);
+        }
+        else if ("Окно Новый счет".equals(page))
+        {
+            newBillPage.get(elementName).sendKeys(text);
         }
     }
 
@@ -136,6 +156,18 @@ public class AccountStepdefs {
         {
             vtPosPage.get(elementName).click();
         }
+        else if ("Раздел Счета".equals(page))
+        {
+            billsPage.get(elementName).click();
+        }
+        else if ("Окно Новый счет".equals(page))
+        {
+            newBillPage.get(elementName).click();
+        }
+        else if ("Информационное сообщение".equals(page))
+        {
+            infoPage.get(elementName).click();
+        }
 
     }
     @And("^ожидать пока отработает скрипт на странице \"([^\"]*)\"$")
@@ -143,11 +175,11 @@ public class AccountStepdefs {
     {
         if ("Раздел виртуального терминала (MOTO - платеж)".equals(page))
         {
-            sleep(500); //TODO разобраться как дождаться окончания работы скрипта програмно (это маскирование номера карты)
+            sleep(500); //TODO разобраться как дождаться окончания работы скрипта програмно (это маскирование номера карты?)
         }
         else if ("Раздел виртуального терминала (POS - платеж)".equals(page))
         {
-            sleep(500); //TODO разобраться как дождаться окончания работы скрипта програмно (это маскирование номера карты)
+            sleep(500); //TODO разобраться как дождаться окончания работы скрипта програмно (это маскирование номера карты?)
         }
     }
 }
