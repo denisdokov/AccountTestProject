@@ -7,10 +7,12 @@ import com.github.kevinsawicki.http.HttpRequest;
  */
 public class HttpOperations {
 
-    public void SilentPay(String url, String Merchant_ID, String OrderNumber, String OrderAmount, String OrderCurrency, String Language, String Delay, String Comment,
+    public static String SilentPay(String url, String Merchant_ID, String OrderNumber, String OrderAmount, String OrderCurrency, String Language, String Delay, String Comment,
                           String Login, String Password, String TestMode, String Cardtype, String Cardnumber, String Expiremonth, String Expireyear, String Cardholder,
                           String Cvc2, String Clientip, String Lastname, String Firstname, String Middlename, String Email, String Address, String HomePhone, String Country,
                           String State, String City, String Zip, String Format, String Fax){
+
+        String defaultURL;
         HttpRequest request = HttpRequest.get(url, true,
                 "Merchant_ID", Merchant_ID,
                 "OrderNumber", OrderNumber,
@@ -44,5 +46,7 @@ public class HttpOperations {
 
         request.trustAllCerts();
         request.trustAllHosts();
+        defaultURL = request.getConnection().getURL().toString();
+        return defaultURL;
     }
 }

@@ -23,4 +23,10 @@ public class MainPage extends AbstractPage {
     @FindBy(xpath = "//td/div/table/tbody/tr/td[text()=\"Счета\"]")
     public SelenideElement BillsTab;
 
+    //Пункт меню "Мониторинг заказов"
+    @NameOfElement("Вкладка Мониторинг заказов")
+    @FindBy (xpath = "//td/div/table/tbody/tr/td[text()=\"Мониторинг заказов\"]")
+    public SelenideElement MonitorTab;
+
+
 }
