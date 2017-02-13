@@ -4,13 +4,8 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import cucumber.api.java.uk.Нехай;
-import cucumber.api.java.uk.Припустимощо;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.interactions.Action;
-import org.openqa.selenium.interactions.Actions;
 import ru.paysecure.pageobjects.*;
 import ru.paysecure.utils.OpDetails;
 
@@ -35,10 +30,12 @@ public class AccountStepdefs {
     BillsPage billsPage = page(BillsPage.class);
     NewBillPage newBillPage = page(NewBillPage.class);
     InfoPage infoPage = page(InfoPage.class);
-    MonitorPage monitorPage = page(MonitorPage.class);
+    OrderMonitorPage orderMonitorPage = page(OrderMonitorPage.class);
+    OperationMonitorPage operationMonitorPage = page(OperationMonitorPage.class);
     ApprovePage approvePage = page(ApprovePage.class);
     RefundPage refundPage = page(RefundPage.class);
     OrderDetailsPage orderDetailsPage = page(OrderDetailsPage.class);
+    OperationDetailsPage operationDetailsPage = page (OperationDetailsPage.class);
 
 
     @Given("^открыть \"([^\"]*)\"$")
@@ -101,7 +98,11 @@ public class AccountStepdefs {
         }
         else if ("Раздел Мониторинг заказов".equals(page))
         {
-            monitorPage.get(elementName).shouldBe(Condition.appears);
+            orderMonitorPage.get(elementName).shouldBe(Condition.appears);
+        }
+        else if ("Раздел Мониторинг операций".equals(page))
+        {
+            operationMonitorPage.get(elementName).shouldBe(Condition.appears);
         }
         else if ("Окно Подтверждение".equals(page))
         {
@@ -114,6 +115,10 @@ public class AccountStepdefs {
         else if ("Окно Детализация заказа".equals(page))
         {
             orderDetailsPage.get(elementName).shouldBe(Condition.appears);
+        }
+        else if ("Окно Детализация операции".equals(page))
+        {
+            operationDetailsPage.get(elementName).shouldBe(Condition.appears);
         }
 
     }
@@ -152,7 +157,11 @@ public class AccountStepdefs {
 
         if ("Раздел Мониторинг заказов".equals(page))
         {
-            monitorPage.get(elementName).sendKeys(savedText);
+            orderMonitorPage.get(elementName).sendKeys(savedText);
+        }
+        else if ("Раздел Мониторинг операций".equals(page))
+        {
+            operationMonitorPage.get(elementName).sendKeys(savedText);
         }
     }
 
@@ -190,7 +199,11 @@ public class AccountStepdefs {
         }
         else if ("Раздел Мониторинг заказов".equals(page))
         {
-            monitorPage.get(elementName).waitUntil(Condition.disappears, 10000);;
+            orderMonitorPage.get(elementName).waitUntil(Condition.disappears, 10000);;
+        }
+        else if ("Раздел Мониторинг операций".equals(page))
+        {
+            operationMonitorPage.get(elementName).waitUntil(Condition.disappears, 10000);;
         }
 
     }
@@ -203,11 +216,11 @@ public class AccountStepdefs {
         {
             if ("Пункт меню Подтверждение".equals(menuItem)) //TODO разобраться почему не кликает в пункты меню
             {
-                Selenide.actions().contextClick(monitorPage.get(elementName)).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ENTER).build().perform();
+                Selenide.actions().contextClick(orderMonitorPage.get(elementName)).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ENTER).build().perform();
             }
             else if ("Пункт меню Возврат денег".equals(menuItem)) //TODO разобраться почему не кликает в пункты меню
             {
-                Selenide.actions().contextClick(monitorPage.get(elementName)).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ENTER).build().perform();
+                Selenide.actions().contextClick(orderMonitorPage.get(elementName)).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ENTER).build().perform();
             }
 
         }
@@ -263,7 +276,11 @@ public class AccountStepdefs {
         }
         else if ("Раздел Мониторинг заказов".equals(page))
         {
-            monitorPage.get(elementName).click();
+            orderMonitorPage.get(elementName).click();
+        }
+        else if ("Раздел Мониторинг операций".equals(page))
+        {
+            operationMonitorPage.get(elementName).click();
         }
         else if ("Окно Подтверждение".equals(page))
         {
@@ -281,7 +298,11 @@ public class AccountStepdefs {
     {
         if ("Раздел Мониторинг заказов".equals(page))
         {
-            Selenide.actions().click(monitorPage.get(elementName)).sendKeys(Keys.ENTER).build().perform();
+            Selenide.actions().click(orderMonitorPage.get(elementName)).sendKeys(Keys.ENTER).build().perform();
+        }
+        else if ("Раздел Мониторинг операций".equals(page))
+        {
+            Selenide.actions().click(operationMonitorPage.get(elementName)).sendKeys(Keys.ENTER).build().perform();
         }
 
     }
