@@ -3,7 +3,7 @@ Feature: Подтверждение и отмена оплаты
 
   Scenario: Подтверждение оплаты
 
-    Given создать заказ на сервисе "https://payments.t.paysecure.ru/pay/silentpay.cfm" при delay = "1" и запомнить "Номер заказа"
+    Given создать заказ на сервисе "https://payments.t.paysecure.ru/pay/silentpay.cfm" с MerchantID = "772545", Login = "test1602rgk2", Password = "test1602rgk3", delay = "1" и запомнить "Номер заказа"
     And открыть "account.t.paysecure.ru"
     And проверить, что элемент с именем "Заголовок главной страницы" отображается в "Главное меню"
     And проверить, что элемент с именем "Вкладка Мониторинг заказов" отображается в "Главное меню"
@@ -24,7 +24,7 @@ Feature: Подтверждение и отмена оплаты
 
   Scenario: Отмена оплаты
 
-    Given создать заказ на сервисе "https://payments.t.paysecure.ru/pay/silentpay.cfm" при delay = "0" и запомнить "Номер заказа"
+    Given создать заказ на сервисе "https://payments.t.paysecure.ru/pay/silentpay.cfm" с MerchantID = "772545", Login = "test1602rgk2", Password = "test1602rgk3", delay = "0" и запомнить "Номер заказа"
     And открыть "account.t.paysecure.ru"
     And проверить, что элемент с именем "Заголовок главной страницы" отображается в "Главное меню"
     And проверить, что элемент с именем "Вкладка Мониторинг заказов" отображается в "Главное меню"

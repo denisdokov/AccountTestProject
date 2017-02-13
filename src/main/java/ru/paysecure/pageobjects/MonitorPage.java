@@ -13,6 +13,11 @@ public class MonitorPage extends AbstractPage {
     @FindBy(xpath = "//div[@id]/table/tbody/tr/td[text()=\"Мониторинг заказов\"]")
     public SelenideElement title;
 
+    //Вкладка Заказы
+    @NameOfElement("Вкладка Заказы")
+    @FindBy(xpath = "//table/tbody/tr/td[text()=\"Заказы\"]")
+    public SelenideElement OrdersTab;
+
     //Поле ввода "Номер заказа"
     @NameOfElement("Номер заказа")
     @FindBy(xpath = "//label/nobr[text()=\"Номер заказа\"]/../following::input[1]")
@@ -42,4 +47,9 @@ public class MonitorPage extends AbstractPage {
     @NameOfElement("Окно Идет загрузка данных")
     @FindBy(xpath = "//i[text()=\"Идет загрузка данных. Пожалуйста, подождите\"]")
     public SelenideElement waitWindow;
+
+    //Окно Детализация заказа
+    @NameOfElement("Заголовок окна Детализация заказа")
+    @FindBy(xpath = "//table/tbody/tr/td[contains(text(),\"Детализация заказа:\")]")
+    public SelenideElement orderDetailsWindow;
 }

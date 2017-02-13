@@ -38,6 +38,7 @@ public class AccountStepdefs {
     MonitorPage monitorPage = page(MonitorPage.class);
     ApprovePage approvePage = page(ApprovePage.class);
     RefundPage refundPage = page(RefundPage.class);
+    OrderDetailsPage orderDetailsPage = page(OrderDetailsPage.class);
 
 
     @Given("^открыть \"([^\"]*)\"$")
@@ -46,13 +47,13 @@ public class AccountStepdefs {
         open("http://" + url);
     }
 
-    @Given("^создать заказ на сервисе \"([^\"]*)\" при delay = \"([^\"]*)\" и запомнить \"([^\"]*)\"$")
-    public void SilentPayDelayAndSave(String url, String delay, String paramName)
+    @Given("^создать заказ на сервисе \"([^\"]*)\" с MerchantID = \"([^\"]*)\", Login = \"([^\"]*)\", Password = \"([^\"]*)\", delay = \"([^\"]*)\" и запомнить \"([^\"]*)\"$")
+    public void SilentPayDelayAndSave(String url, String MerchantID, String Login, String Password, String delay, String paramName)
     {
         String OrderNumber = getNumber();
 
         String silentURL;
-        silentURL = SilentPay(url, "772545", OrderNumber, "101", "RUB", "RU", delay, "SilentPay with delay cucumber pay", "test1602rgk2", "test1602rgk3", "0", "1", "4111111111111111", "12", "2020", "SER", "123",
+        silentURL = SilentPay(url, MerchantID, OrderNumber, "101", "RUB", "RU", delay, "SilentPay with delay cucumber pay", Login, Password, "0", "1", "4111111111111111", "12", "2020", "SER", "123",
                 "10.20.10.18", "Selenide", "Cucumber", "Test", "assistqa1@gmail.ru", "SPb", "21212", "Russia", "78", "SPb", "", "", "25555");
         open(silentURL);
         if("Номер заказа".equals(paramName))
@@ -110,10 +111,10 @@ public class AccountStepdefs {
         {
             refundPage.get(elementName).shouldBe(Condition.exist);
         }
-
-
-
-
+        else if ("Окно Детализация заказа".equals(page))
+        {
+            orderDetailsPage.get(elementName).shouldBe(Condition.appears);
+        }
 
     }
     @And("^ввести в поле с именем \"([^\"]*)\" текст: \"([^\"]*)\" в \"([^\"]*)\"$")
@@ -271,6 +272,16 @@ public class AccountStepdefs {
         else if ("Окно Возврат денег".equals(page))
         {
             refundPage.get(elementName).click();
+        }
+
+    }
+
+    @When("^два раза кликнуть по элементу с именем \"([^\"]*)\" в \"([^\"]*)\"$")
+    public void doubleClickElement(String elementName, String page)
+    {
+        if ("Раздел Мониторинг заказов".equals(page))
+        {
+            Selenide.actions().click(monitorPage.get(elementName)).sendKeys(Keys.ENTER).build().perform();
         }
 
     }

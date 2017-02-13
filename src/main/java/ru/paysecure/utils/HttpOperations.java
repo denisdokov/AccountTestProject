@@ -7,7 +7,7 @@ import com.github.kevinsawicki.http.HttpRequest;
  */
 public class HttpOperations {
 
-    public static String SilentPay(String url, String Merchant_ID, String OrderNumber, String OrderAmount, String OrderCurrency, String Language, String Delay, String Comment,
+    public static String SilentPay(String url, String Merchant_ID, String OrderNumber, String OrderAmount, String OrderCurrency, String Language, String Delay, String OrderComment,
                           String Login, String Password, String TestMode, String Cardtype, String Cardnumber, String Expiremonth, String Expireyear, String Cardholder,
                           String Cvc2, String Clientip, String Lastname, String Firstname, String Middlename, String Email, String Address, String HomePhone, String Country,
                           String State, String City, String Zip, String Format, String Fax){
@@ -20,7 +20,7 @@ public class HttpOperations {
                 "OrderCurrency", OrderCurrency,
                 "Language", Language,
                 "Delay", Delay,
-                "Comment", Comment,
+                "OrderComment", OrderComment,
                 "Login", Login,
                 "Password", Password,
                 "TestMode", TestMode,
