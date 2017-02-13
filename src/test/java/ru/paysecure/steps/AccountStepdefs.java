@@ -214,11 +214,11 @@ public class AccountStepdefs {
         if ("Раздел Мониторинг заказов".equals(page))
 
         {
-            if ("Пункт меню Подтверждение".equals(menuItem)) //TODO разобраться почему не кликает в пункты меню
+            if ("Пункт меню Подтверждение".equals(menuItem)) //TODO разобраться почему не кликает в пункты контекстного меню
             {
                 Selenide.actions().contextClick(orderMonitorPage.get(elementName)).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ENTER).build().perform();
             }
-            else if ("Пункт меню Возврат денег".equals(menuItem)) //TODO разобраться почему не кликает в пункты меню
+            else if ("Пункт меню Возврат денег".equals(menuItem)) //TODO разобраться почему не кликает в пункты контекстного меню
             {
                 Selenide.actions().contextClick(orderMonitorPage.get(elementName)).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ENTER).build().perform();
             }
@@ -298,11 +298,11 @@ public class AccountStepdefs {
     {
         if ("Раздел Мониторинг заказов".equals(page))
         {
-            Selenide.actions().click(orderMonitorPage.get(elementName)).sendKeys(Keys.ENTER).build().perform();
+            Selenide.actions().click(orderMonitorPage.get(elementName)).sendKeys(Keys.ENTER).build().perform(); //TODO при использовании doubleClick выделяет запись, а не открывает окно детализации
         }
         else if ("Раздел Мониторинг операций".equals(page))
         {
-            Selenide.actions().click(operationMonitorPage.get(elementName)).sendKeys(Keys.ENTER).build().perform();
+            Selenide.actions().click(operationMonitorPage.get(elementName)).sendKeys(Keys.ENTER).build().perform(); //TODO при использовании doubleClick выделяет запись, а не открывает окно детализации
         }
 
     }
