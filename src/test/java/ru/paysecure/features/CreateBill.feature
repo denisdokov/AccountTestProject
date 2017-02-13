@@ -1,4 +1,4 @@
-#@smoketest
+@smoketest
 Feature: Работа со счетами
 
   Scenario: Выставление нового счета

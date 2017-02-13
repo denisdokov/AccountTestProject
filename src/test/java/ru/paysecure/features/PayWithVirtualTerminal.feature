@@ -1,4 +1,4 @@
-#@smoketest
+@smoketest
   Feature: Проведение платежей через виртуальный терминал
 
     Scenario: Совершение MOTO - платежа
