@@ -182,7 +182,7 @@ public class AccountStepdefs {
         }
         else if ("Окно Новый счет".equals(page))
         {
-            newBillPage.get(elementName).sendKeys(text);
+            newBillPage.get(elementName).sendKeys(text); //TODO изучить проблему связанную с периодическим несрабатыванием выбора мерчанта
         }
     }
 
