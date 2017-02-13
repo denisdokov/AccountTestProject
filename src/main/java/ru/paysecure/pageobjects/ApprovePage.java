@@ -12,7 +12,7 @@ public class ApprovePage extends AbstractPage {
     public SelenideElement title;
 
     //Кнопка "Подтвердить заказы"
-    @NameOfElement("Кнопка Подтвердить заказы")
+    @NameOfElement("Кнопка подтвердить заказы")
     @FindBy(xpath = "//table/tbody/tr/td[text()=\"Подтвердить заказы\"]")
     public SelenideElement refundButton;
 

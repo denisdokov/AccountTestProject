@@ -104,12 +104,11 @@ public class AccountStepdefs {
         }
         else if ("Окно Подтверждение".equals(page))
         {
-            approvePage.get(elementName).shouldBe(Condition.appears);
+            approvePage.get(elementName).shouldBe(Condition.exist);
         }
         else if ("Окно Возврат денег".equals(page))
         {
-            refundPage.get(elementName).;
-            refundPage.get(elementName).shouldBe(Condition.appears);
+            refundPage.get(elementName).shouldBe(Condition.exist);
         }
 
 
