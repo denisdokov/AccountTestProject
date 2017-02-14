@@ -16,17 +16,23 @@ public class MainPage extends AbstractPage {
     //Пункт меню "Виртуальный терминал"
     @NameOfElement("Вкладка виртуального терминала")
     @FindBy (xpath = "//td/div/table/tbody/tr/td[text()=\"Виртуальный терминал\"]")
-    public SelenideElement VirtualTerminalTab;
+    public SelenideElement virtualTerminalTab;
 
     //Пункт меню "Счета"
     @NameOfElement("Вкладка Счета")
     @FindBy(xpath = "//td/div/table/tbody/tr/td[text()=\"Счета\"]")
-    public SelenideElement BillsTab;
+    public SelenideElement billsTab;
 
     //Пункт меню "Мониторинг заказов"
     @NameOfElement("Вкладка Мониторинг заказов")
     @FindBy (xpath = "//td/div/table/tbody/tr/td[text()=\"Мониторинг заказов\"]")
-    public SelenideElement MonitorTab;
+    public SelenideElement monitorTab;
+
+    //Пункт меню "Заказать отчет"
+    @NameOfElement("Вкладка Заказать отчет")
+    @FindBy (xpath = "//td/div/table/tbody/tr/td[text()=\"Заказать отчет\"]")
+    public SelenideElement reportTab;
+
 
 
 }
