@@ -28,3 +28,4 @@ public class InfoPage extends AbstractPage {
     @FindBy(xpath = "//td[@class]/div[text()=\"OK\"]")
     public SelenideElement okButton;
 }
+//test
